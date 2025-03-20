@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Parking Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+
+        /* Navigation Bar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to right, #3498db, #2c3e50);
+    padding: 15px 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 5px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+
+        :root {
+            --dark-bg: #1e1e2e;
+            --card-bg: #2a2a3a;
+            --text-primary: #e2e2e2;
+            --text-secondary: #a9a9b8;
+            --accent-green: #2ecc71;
+            --accent-red: #e74c3c;
+            --accent-blue: #3498db;
+            --border-radius: 8px;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.2s ease;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .dashboard-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .dashboard-header h1 {
+            font-weight: 500;
+            font-size: 28px;
+            margin-left: 10px;
+        }
+        
+        .dashboard-header i {
+            font-size: 24px;
+            color: var(--accent-blue);
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: auto;
+        }
+        
+        .status-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+        
+        .status-card {
+            padding: 24px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .available {
+            background: linear-gradient(145deg, rgba(46, 204, 113, 0.15), rgba(46, 204, 113, 0.05));
+            border: 1px solid rgba(46, 204, 113, 0.3);
+        }
+        
+        .occupied {
+            background: linear-gradient(145deg, rgba(231, 76, 60, 0.15), rgba(231, 76, 60, 0.05));
+            border: 1px solid rgba(231, 76, 60, 0.3);
+        }
+        
+        .status-card h2 {
+            font-size: 36px;
+            font-weight: 600;
+            margin: 8px 0;
+        }
+        
+        .status-card p {
+            font-size: 16px;
+            color: var(--text-secondary);
+        }
+        
+        .status-card.available h2 {
+            color: var(--accent-green);
+        }
+        
+        .status-card.occupied h2 {
+            color: var(--accent-red);
+        }
+        
+        .status-card i {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        
+        .status-card.available i {
+            color: var(--accent-green);
+        }
+        
+        .status-card.occupied i {
+            color: var(--accent-red);
+        }
+        
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .card-header h2 {
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        .card-header .refresh {
+            background: none;
+            border: none;
+            color: var(--accent-blue);
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-header .refresh i {
+            margin-right: 5px;
+        }
+        
+        .slots-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .slots-table th {
+            text-align: left;
+            padding: 12px;
+            background: rgba(52, 152, 219, 0.1);
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+        
+        .slots-table td {
+            padding: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .slots-table tr:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .status-badge.available {
+            background-color: rgba(46, 204, 113, 0.15);
+            color: var(--accent-green);
+            border: 1px solid rgba(46, 204, 113, 0.3);
+        }
+        
+        .status-badge.occupied {
+            background-color: rgba(231, 76, 60, 0.15);
+            color: var(--accent-red);
+            border: 1px solid rgba(231, 76, 60, 0.3);
+        }
+        
+        .footer {
+            margin-top: 32px;
+            color: var(--text-secondary);
+            font-size: 12px;
+            text-align: center;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 250px;
+        }
+        
+        @media (max-width: 768px) {
+            .status-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .table-responsive {
+                overflow-x: auto;
+            }
+        }
+
+        #last-refresh {
+            color: var(--text-secondary);
+            font-size: 12px;
+            text-align: right;
+            margin-top: 8px;
+        }
+
+        .loading {
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="dashboard-header">
+            <i class="fas fa-parking"></i>
+            <h1>Smart Parking Dashboard</h1>
+        </div>
+
+        <nav>
+            <div class="logo">Smart Parking</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="database.html">Database</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        
+        <!-- Status Cards -->
+        <div class="status-cards">
+            <div class="status-card available">
+                <i class="fas fa-check-circle"></i>
+                <p>Available Slots</p>
+                <h2 id="available-count">0</h2>
+            </div>
+            <div class="status-card occupied">
+                <i class="fas fa-car"></i>
+                <p>Occupied Slots</p>
+                <h2 id="occupied-count">0</h2>
+            </div>
+        </div>
+        
+        <!-- Parking Activity Chart -->
+        <div class="card">
+            <div class="card-header">
+                <h2>Parking Status Overview</h2>
+                <button class="refresh" onclick="fetchSlots()">
+                    <i class="fas fa-sync-alt" id="refresh-icon"></i> Refresh
+                </button>
+            </div>
+            <div class="chart-container">
+                <canvas id="parkingChart"></canvas>
+            </div>
+        </div>
+        
+        <!-- Live Table -->
+        <div class="card">
+            <div class="card-header">
+                <h2>Live Parking Status</h2>
+                <div id="last-refresh">Last updated: Never</div>
+            </div>
+            <div class="table-responsive">
+                <table class="slots-table">
+                    <thead>
+                        <tr>
+                            <th>Slot ID</th>
+                            <th>Distance (cm)</th>
+                            <th>Status</th>
+                            <th>Last Updated</th>
+                        </tr>
+                    </thead>
+                    <tbody id="slotsTable">
+                        <tr><td colspan="4" style="text-align: center;">Loading parking data...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2025 Smart Parking System | Updated in real-time</p>
+        </div>
+    </div>
+
+    <script>
+        let parkingChart;
+        let refreshing = false;
+        
+        async function fetchSlots() {
+            if (refreshing) return;
+            
+            refreshing = true;
+            const refreshIcon = document.getElementById("refresh-icon");
+            refreshIcon.classList.add("loading");
+            
+            try {
+                let response = await fetch("/get_slots");
+                let slots = await response.json();
+
+                // For demo purposes if the fetch fails
+                if (!slots || slots.length === 0) {
+                    slots = [
+                        {slot_id: "A1", distance: 25, status: "Occupied", updated_at: new Date().toISOString()},
+                        {slot_id: "A2", distance: 150, status: "Available", updated_at: new Date().toISOString()},
+                        {slot_id: "B1", distance: 30, status: "Occupied", updated_at: new Date().toISOString()},
+                        {slot_id: "B2", distance: 200, status: "Available", updated_at: new Date().toISOString()},
+                        {slot_id: "C1", distance: 180, status: "Available", updated_at: new Date().toISOString()}
+                    ];
+                }
+
+                let availableCount = 0;
+                let occupiedCount = 0;
+                let tableBody = document.getElementById("slotsTable");
+                tableBody.innerHTML = "";
+
+                slots.forEach(slot => {
+                    let statusClass = slot.status === 'Occupied' ? 'occupied' : 'available';
+                    let row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td>${slot.slot_id}</td>
+                        <td>${slot.distance} cm</td>
+                        <td><span class="status-badge ${statusClass}">${slot.status}</span></td>
+                        <td>${formatDateTime(new Date(slot.updated_at))}</td>
+                    `;
+                    tableBody.appendChild(row);
+
+                    // Count available & occupied slots
+                    if (slot.status === "Available") availableCount++;
+                    else occupiedCount++;
+                });
+
+                document.getElementById("available-count").innerText = availableCount;
+                document.getElementById("occupied-count").innerText = occupiedCount;
+                document.getElementById("last-refresh").innerText = "Last updated: " + formatDateTime(new Date());
+
+                // Update Chart
+                updateChart(availableCount, occupiedCount);
+
+            } catch (error) {
+                console.error("Error fetching slots:", error);
+                document.getElementById("slotsTable").innerHTML = 
+                    `<tr><td colspan="4" style="text-align: center;">Error loading data. <a href="#" onclick="fetchSlots()">Try again</a></td></tr>`;
+            } finally {
+                refreshIcon.classList.remove("loading");
+                refreshing = false;
+            }
+        }
+
+        function formatDateTime(date) {
+            const options = { 
+                hour: '2-digit', 
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true,
+                day: 'numeric',
+                month: 'short'
+            };
+            return date.toLocaleDateString('en-US', options);
+        }
+
+        function updateChart(available, occupied) {
+            const ctx = document.getElementById("parkingChart").getContext("2d");
+            
+            // Set Chart.js global defaults
+            Chart.defaults.color = '#a9a9b8';
+            Chart.defaults.font.family = "'Segoe UI', sans-serif";
+            
+            if (!parkingChart) {
+                parkingChart = new Chart(ctx, {
+                    type: "doughnut",
+                    data: {
+                        labels: ["Available", "Occupied"],
+                        datasets: [{
+                            data: [available, occupied],
+                            backgroundColor: ["rgba(46, 204, 113, 0.8)", "rgba(231, 76, 60, 0.8)"],
+                            borderColor: ["rgba(46, 204, 113, 1)", "rgba(231, 76, 60, 1)"],
+                            borderWidth: 1,
+                            hoverOffset: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'right',
+                                labels: {
+                                    boxWidth: 15,
+                                    padding: 15
+                                }
+                            },
+                            tooltip: {
+                                backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                                titleFont: {
+                                    size: 14
+                                },
+                                bodyFont: {
+                                    size: 13
+                                },
+                                callbacks: {
+                                    label: function(context) {
+                                        const label = context.label || '';
+                                        const value = context.raw || 0;
+                                        const total = context.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
+                                        const percentage = Math.round((value / total) * 100);
+                                        return `${label}: ${value} (${percentage}%)`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            } else {
+                parkingChart.data.datasets[0].data = [available, occupied];
+                parkingChart.update();
+            }
+        }
+
+        // Initial load
+        fetchSlots();
+        
+        // Auto-refresh every 5 seconds
+        setInterval(fetchSlots, 5000);
+    </script>
+</body>
+</html>

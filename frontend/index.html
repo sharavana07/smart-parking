@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Parking System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">Smart Parking</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="database.html">Database</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <section class="hero">
+            <h1>Smart Parking System</h1>
+            <p class="tagline">Frictionless parking experience for layered parking spaces using IoT technology</p>
+            <a href="#features" class="cta-button">Learn More</a>
+        </section>
+
+        <section class="overview">
+            <h2>Project Overview</h2>
+            <p>Our Smart Parking System aims to create a frictionless parking experience in layered parking spaces by using IoT technology to detect real-time parking slot availability. No more driving through multiple layers to find an empty spot!</p>
+            
+            <div class="tech-specs">
+                <div class="spec-item">
+                    <h3>Microcontroller</h3>
+                    <p>ESP32</p>
+                </div>
+                <div class="spec-item">
+                    <h3>Sensors</h3>
+                    <p>HC-SR04 Ultrasonic Sensors (2 units)</p>
+                </div>
+                <div class="spec-item">
+                    <h3>Data Transmission</h3>
+                    <p>WiFi (ESP32 to Web Server)</p>
+                </div>
+                <div class="spec-item">
+                    <h3>Interface</h3>
+                    <p>Web-based UI (Real-time parking slot status)</p>
+                </div>
+                <div class="spec-item">
+                    <h3>Programming</h3>
+                    <p>C++ (ESP32) & Web Technologies (UI)</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <h2>Key Features</h2>
+            <div class="feature-container">
+                <div class="feature-box">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Real-time Monitoring</h3>
+                    <p>Live tracking of parking slot occupancy with instant updates.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">📱</div>
+                    <h3>Web-based Dashboard</h3>
+                    <p>User-friendly interface showing slot availability status.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">📶</div>
+                    <h3>Wireless Updates</h3>
+                    <p>Live updates via WiFi from ESP32 to web server.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">⚙️</div>
+                    <h3>Scalable System</h3>
+                    <p>Easily expandable to accommodate additional parking slots.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="implementation">
+            <h2>Implementation Plan</h2>
+            
+            <div class="implementation-phase">
+                <h3>1. Hardware Setup</h3>
+                <div class="phase-content">
+                    <img src="/api/placeholder/300/200" alt="Hardware setup illustration" class="phase-image">
+                    <div class="phase-details">
+                        <ul>
+                            <li><strong>ESP32:</strong> Central microcontroller processing sensor data</li>
+                            <li><strong>HC-SR04 Sensors:</strong> Installed above each parking slot</li>
+                            <li><strong>Circuit Connections:</strong> Proper wiring between ESP32 and sensors</li>
+                            <li><strong>Power Supply:</strong> Reliable power source for continuous operation</li>
+                        </ul>
+                        <p class="phase-status">Status: In progress (Hardware team)</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="implementation-phase">
+                <h3>2. Backend & Website Development</h3>
+                <div class="phase-content">
+                    <img src="/api/placeholder/300/200" alt="Backend development illustration" class="phase-image">
+                    <div class="phase-details">
+                        <ul>
+                            <li><strong>Web Server:</strong> Collects real-time data from ESP32</li>
+                            <li><strong>Database:</strong> Firebase Realtime Database or MySQL (TBD)</li>
+                            <li><strong>Frontend UI:</strong> Displays real-time status of parking slots</li>
+                            <li><strong>Live Updates:</strong> Automatic refresh when slot status changes</li>
+                        </ul>
+                        <p class="phase-status">Status: In progress (Software team)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Parking Status Display -->
+        <section class="live-display">
+            <h2>Live Parking Status</h2>
+            <p>Current prototype monitors two parking slots:</p>
+            <div class="parking-container" id="parkingSlots">
+                <!-- This will be populated by JavaScript -->
+                <!-- Placeholder for demonstration -->
+                <div class="parking-slot available">
+                    <div class="slot-number">Slot 1</div>
+                    <div class="slot-status">Available</div>
+                </div>
+                <div class="parking-slot occupied">
+                    <div class="slot-number">Slot 2</div>
+                    <div class="slot-status">Occupied</div>
+                </div>
+            </div>
+            <p class="legend">
+                <span class="available-indicator">■</span> Available
+                <span class="occupied-indicator">■</span> Occupied
+            </p>
+        </section>
+
+        <section class="how-it-works">
+            <h2>How It Works</h2>
+            <div class="workflow">
+                <div class="workflow-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Detection</h3>
+                        <p>HC-SR04 ultrasonic sensors detect presence or absence of vehicles in parking slots</p>
+                    </div>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Processing</h3>
+                        <p>ESP32 processes sensor data and determines parking slot status</p>
+                    </div>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Transmission</h3>
+                        <p>Data is transmitted via WiFi to the web server</p>
+                    </div>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Display</h3>
+                        <p>Web interface updates in real-time to show current parking availability</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="technical-details">
+            <h2>Technical Details</h2>
+            <div class="tech-container">
+                <div class="tech-item">
+                    <h3>ESP32 Specifications</h3>
+                    <ul>
+                        <li>Dual-core processor</li>
+                        <li>Built-in WiFi and Bluetooth</li>
+                        <li>Multiple GPIO pins for sensor connections</li>
+                        <li>Low power consumption</li>
+                    </ul>
+                </div>
+                <div class="tech-item">
+                    <h3>HC-SR04 Sensor Details</h3>
+                    <ul>
+                        <li>Detection range: 2cm to 400cm</li>
+                        <li>Resolution: 0.3cm</li>
+                        <li>Measuring angle: 15 degrees</li>
+                        <li>Operating voltage: 5V DC</li>
+                    </ul>
+                </div>
+                <div class="tech-item">
+                    <h3>Software Stack</h3>
+                    <ul>
+                        <li>ESP32: Arduino IDE with C++</li>
+                        <li>Backend: Node.js</li>
+                        <li>Database: MySQL</li>
+                        <li>Frontend: HTML, CSS, JavaScript</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="future-plans">
+            <h2>Future Enhancements</h2>
+            <div class="plans-container">
+                <div class="plan-item">
+                    <div class="plan-icon">📱</div>
+                    <h3>Mobile Application</h3>
+                    <p>Develop companion mobile apps for Android and iOS</p>
+                </div>
+                <div class="plan-item">
+                    <div class="plan-icon">🔌</div>
+                    <h3>Additional Sensors</h3>
+                    <p>Expand system to monitor more parking slots</p>
+                </div>
+                <div class="plan-item">
+                    <div class="plan-icon">🔒</div>
+                    <h3>Access Control</h3>
+                    <p>Integrate with automated barriers for controlled access</p>
+                </div>
+                <div class="plan-item">
+                    <div class="plan-icon">📊</div>
+                    <h3>Analytics Dashboard</h3>
+                    <p>Add usage statistics and occupancy patterns</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="project-team">
+            <h2>Meet The Team</h2>
+            <div class="team-container">
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="./assets/1.png" alt="Sharavana Ragav">
+                    </div>
+                    <h3>Sharavana Ragav</h3>
+                    <p>Backend Developer</p>
+                    <p>Responsible for web server and database integration</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="./assets/2.png" alt="Abhishek">
+                    </div>
+                    <h3>Abhishek</h3>
+                    <p>Frontend Developer</p>
+                    <p>Creating the user interface and experience design</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-photo">
+                        <img src="./assets/3.png" alt="Aryan Sharma">
+                    </div>
+                    <h3>Aryan Sharma</h3>
+                    <p>Hardware Integration</p>
+                    <p>Working on ESP32 and sensor setup</p>
+                </div>
+            </div>
+        </section>
+        
+
+        <section class="call-to-action">
+            <h2>Follow Our Progress</h2>
+            <p>Stay updated with our development journey as we build and improve our Smart Parking System.</p>
+            <div class="cta-buttons">
+                <a href="#" class="cta-button">Project Updates</a>
+                <a href="#" class="cta-button secondary">Contact Us</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Smart Parking System</h3>
+                <p>Creating frictionless parking experiences through IoT technology.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="database.html">Database</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: info@smartparking.com</p>
+                <p>GitHub: github.com/smart-parking-iot</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Developed by Sharavana Ragav, Abhishek, Aryan Sharma | &copy; 2025 Smart Parking System</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
