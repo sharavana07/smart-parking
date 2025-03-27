@@ -13,7 +13,7 @@ const pool = new Pool({
     user: "postgres",
     host: "localhost",
     database: "parking_system",
-    password: "20150",
+    password: "karma",
     port: 5432,
 });
 app.post("/update_slot", async (req, res) => {
