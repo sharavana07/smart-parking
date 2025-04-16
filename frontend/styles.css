@@ -2,27 +2,30 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    background: #f8f9fa;
+    background: #0d0d0d; /* Deep Black for high contrast */
     padding: 0;
     margin: 0;
-    color: #333;
+    color: #ffffff; /* Pure White for readability */
 }
 
+/* Headings */
 h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
     margin-top: 0;
-    color: #2c3e50;
+    color: #00e5ff; /* Bright Neon Cyan for highlights */
 }
 
+/* Links */
 a {
-    color: #3498db;
+    color: #ff6f00; /* Vibrant Neon Orange for buttons & highlights */
     text-decoration: none;
     transition: all 0.3s ease;
 }
 
 a:hover {
-    color: #2980b9;
+    color: #ff3d00; /* Slightly darker neon orange for hover effect */
 }
+
 
 /* Navigation Bar */
 nav {
@@ -73,7 +76,6 @@ nav ul li a:hover {
 main {
     padding: 20px 5%;
 }
-
 /* Hero Section */
 .hero {
     text-align: center;
@@ -100,43 +102,50 @@ main {
     margin-right: auto;
 }
 
+/* Primary CTA Button - Neon Blue */
 .cta-button {
     display: inline-block;
-    background-color: #3498db;
-    color: white;
+    background-color: #00e5ff; /* Neon Blue */
+    color: black;
     padding: 12px 30px;
     border-radius: 50px;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.7);
 }
 
 .cta-button:hover {
-    background-color: #2980b9;
+    background-color: #00aaff; /* Darker Neon Blue */
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    color: white;
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.9);
+    color: black;
 }
 
+/* Secondary CTA Button - Neon Orange */
 .cta-button.secondary {
     background-color: transparent;
-    border: 2px solid #3498db;
-    color: #3498db;
+    border: 2px solid #ff6f00; /* Neon Orange */
+    color: #ff6f00;
+    box-shadow: 0 0 10px rgba(255, 111, 0, 0.7);
 }
 
 .cta-button.secondary:hover {
-    background-color: #3498db;
-    color: white;
+    background-color: #ff6f00;
+    color: black;
+    box-shadow: 0 0 20px rgba(255, 111, 0, 0.9);
 }
+
 
 /* Section Styles */
 section {
     margin-bottom: 50px;
     padding: 30px;
-    background-color: white;
+    background-color: #1a1a1a; /* Dark Background for contrast */
     border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 5px 15px rgba(0, 229, 255, 0.2); /* Neon Blue Glow */
+    color: white;
 }
 
 section h2 {
@@ -144,6 +153,7 @@ section h2 {
     margin-bottom: 30px;
     position: relative;
     padding-bottom: 15px;
+    color: #00e5ff; /* Neon Blue */
 }
 
 section h2::after {
@@ -154,19 +164,23 @@ section h2::after {
     transform: translateX(-50%);
     width: 70px;
     height: 3px;
-    background-color: #3498db;
+    background: linear-gradient(90deg, #00e5ff, #ff6f00); /* Neon Blue to Neon Orange */
+    box-shadow: 0 0 8px rgba(0, 229, 255, 0.8); /* Neon Glow */
 }
 
 /* Overview Section */
 .overview {
     text-align: center;
+    color: white;
 }
 
 .overview p {
     max-width: 800px;
     margin: 0 auto 30px;
+    color: #b3b3b3; /* Soft Grey for readability */
 }
 
+/* Tech Specs Grid */
 .tech-specs {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -174,17 +188,26 @@ section h2::after {
     margin-top: 30px;
 }
 
+/* Tech Spec Items */
 .spec-item {
-    background-color: #f8f9fa;
+    background-color: #1a1a1a; /* Dark Card Background */
     padding: 20px;
     border-radius: 8px;
     text-align: center;
+    box-shadow: 0 0 12px rgba(0, 229, 255, 0.3); /* Neon Blue Glow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.spec-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.7); /* Stronger Neon Glow on Hover */
+}
+
+/* Spec Item Titles */
 .spec-item h3 {
     font-size: 1.1rem;
     margin-bottom: 10px;
-    color: #3498db;
+    color: #ff6f00; /* Neon Orange */
 }
 
 /* Features Section */
@@ -197,40 +220,44 @@ section h2::after {
 .feature-box {
     padding: 30px 20px;
     border-radius: 8px;
-    background-color: #f8f9fa;
+    background-color: #1a1a1a; /* Dark Background */
     text-align: center;
     transition: all 0.3s ease;
+    box-shadow: 0 0 12px rgba(0, 229, 255, 0.3); /* Neon Blue Glow */
 }
 
 .feature-box:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.7); /* Stronger Neon Glow */
 }
 
 .feature-icon {
     font-size: 2.5rem;
     margin-bottom: 15px;
+    color: #ff6f00; /* Neon Orange */
 }
 
 .feature-box h3 {
     font-size: 1.2rem;
     margin-bottom: 15px;
-    color: #2c3e50;
+    color: #00e5ff; /* Neon Blue */
 }
 
 /* Implementation Section */
 .implementation-phase {
     margin-bottom: 30px;
-    background-color: #f8f9fa;
+    background-color: #1a1a1a; /* Dark Background */
     border-radius: 8px;
     overflow: hidden;
+    box-shadow: 0 0 12px rgba(255, 111, 0, 0.3); /* Neon Orange Glow */
 }
 
 .implementation-phase h3 {
-    background-color: #3498db;
-    color: white;
+    background: linear-gradient(90deg, #00e5ff, #ff6f00); /* Neon Blue to Neon Orange */
+    color: black;
     padding: 15px;
     margin: 0;
+    text-align: center;
 }
 
 .phase-content {
@@ -244,11 +271,13 @@ section h2::after {
     width: 100%;
     height: auto;
     border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
 }
 
 .phase-details ul {
     padding-left: 20px;
     margin-bottom: 20px;
+    color: #b3b3b3;
 }
 
 .phase-details li {
@@ -257,12 +286,13 @@ section h2::after {
 
 .phase-status {
     font-weight: 600;
-    color: #3498db;
+    color: #00e5ff; /* Neon Blue */
 }
 
 /* Parking Slots */
 .live-display {
     text-align: center;
+    color: white;
 }
 
 .parking-container {
@@ -280,39 +310,69 @@ section h2::after {
     align-items: center;
     justify-content: center;
     border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 12px rgba(0, 229, 255, 0.3);
     transition: all 0.3s ease;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Parking Slot Status */
+.parking-slot.available {
+    background: rgba(57, 255, 20, 0.15); /* Neon Green Transparent */
+    border: 2px solid #39ff14; /* Neon Green */
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.8);
+    color: #39ff14;
+}
+
+.parking-slot.occupied {
+    background: rgba(255, 7, 58, 0.15); /* Neon Red Transparent */
+    border: 2px solid #ff073a; /* Neon Red */
+    box-shadow: 0 0 15px rgba(255, 7, 58, 0.8);
+    color: #ff073a;
 }
 
 .parking-slot:hover {
     transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.7);
 }
 
+/* Slot Number & Status */
 .slot-number {
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 10px;
+    color: #00e5ff; /* Neon Blue */
 }
 
 .slot-status {
     font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
+/* Parking Slot Status */
 .available {
-    background-color: #2ecc71;
-    color: white;
+    background-color: rgba(57, 255, 20, 0.2); /* Neon Green Transparent */
+    color: #39ff14; /* Neon Green */
+    border: 2px solid #39ff14;
+    box-shadow: 0 0 12px rgba(57, 255, 20, 0.8);
 }
 
 .occupied {
-    background-color: #e74c3c;
-    color: white;
+    background-color: rgba(255, 7, 58, 0.2); /* Neon Red Transparent */
+    color: #ff073a; /* Neon Red */
+    border: 2px solid #ff073a;
+    box-shadow: 0 0 12px rgba(255, 7, 58, 0.8);
 }
 
+/* Legend */
 .legend {
     display: flex;
     justify-content: center;
     gap: 20px;
     margin-top: 20px;
+    font-weight: bold;
+    color: white;
 }
 
 .available-indicator, .occupied-indicator {
@@ -320,14 +380,17 @@ section h2::after {
     width: 15px;
     height: 15px;
     margin-right: 5px;
+    border-radius: 50%;
 }
 
 .available-indicator {
-    background-color: #2ecc71;
+    background-color: #39ff14;
+    box-shadow: 0 0 8px rgba(57, 255, 20, 0.8);
 }
 
 .occupied-indicator {
-    background-color: #e74c3c;
+    background-color: #ff073a;
+    box-shadow: 0 0 8px rgba(255, 7, 58, 0.8);
 }
 
 /* How It Works */
@@ -348,25 +411,28 @@ section h2::after {
 .step-number {
     width: 50px;
     height: 50px;
-    background-color: #3498db;
-    color: white;
+    background: linear-gradient(90deg, #00e5ff, #ff6f00); /* Neon Blue to Neon Orange */
+    color: black;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
     font-weight: bold;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.8);
 }
 
 .step-content {
-    background-color: #f8f9fa;
+    background-color: rgba(26, 26, 26, 0.9); /* Dark Background */
     padding: 20px;
     border-radius: 8px;
+    box-shadow: 0 0 12px rgba(0, 229, 255, 0.3);
+    color: #b3b3b3;
 }
 
 .step-content h3 {
     margin-top: 0;
-    color: #3498db;
+    color: #00e5ff; /* Neon Blue */
 }
 
 /* Technical Details */
@@ -377,13 +443,14 @@ section h2::after {
 }
 
 .tech-item {
-    background-color: #f8f9fa;
+    background-color: rgba(26, 26, 26, 0.9); /* Dark Theme */
     padding: 20px;
     border-radius: 8px;
+    box-shadow: 0 0 12px rgba(255, 111, 0, 0.3); /* Neon Orange Glow */
 }
 
 .tech-item h3 {
-    color: #3498db;
+    color: #00e5ff;
     margin-bottom: 15px;
 }
 
@@ -393,6 +460,7 @@ section h2::after {
 
 .tech-item li {
     margin-bottom: 10px;
+    color: #b3b3b3;
 }
 
 /* Future Plans */
@@ -403,26 +471,29 @@ section h2::after {
 }
 
 .plan-item {
-    background-color: #f8f9fa;
+    background-color: rgba(26, 26, 26, 0.9); /* Dark Theme */
     padding: 20px;
     border-radius: 8px;
     text-align: center;
     transition: all 0.3s ease;
+    box-shadow: 0 0 12px rgba(0, 229, 255, 0.3);
+    color: #b3b3b3;
 }
 
 .plan-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.7);
 }
 
 .plan-icon {
     font-size: 2rem;
     margin-bottom: 15px;
+    color: #ff073a; /* Neon Orange */
 }
-
+/* Future Plans */
 .plan-item h3 {
     font-size: 1.1rem;
-    color: #3498db;
+    color: #00e5ff; /* Neon Blue */
     margin-bottom: 10px;
 }
 
@@ -436,17 +507,18 @@ section h2::after {
 }
 
 .team-member {
-    background-color: #ffffff;
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.9), rgba(15, 15, 15, 0.9)); /* Dark Glass Effect */
     padding: 20px;
     border-radius: 12px;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
+    color: #b3b3b3;
 }
 
 .team-member:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.7);
 }
 
 .member-photo {
@@ -458,7 +530,8 @@ section h2::after {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #f3f3f3, #e0e0e0);
+    background: linear-gradient(135deg, #00e5ff, #ff073a); /* Neon Blue to Neon Red */
+    box-shadow: 0 0 10px rgba(255, 111, 0, 0.5);
 }
 
 .member-photo img {
@@ -472,12 +545,12 @@ section h2::after {
     font-size: 1.3rem;
     font-weight: 600;
     margin-bottom: 8px;
-    color: #333;
+    color: #00e5ff;
 }
 
 .team-member p {
     font-size: 1rem;
-    color: #666;
+    color: #b3b3b3;
     margin: 5px 0;
 }
 
@@ -496,14 +569,17 @@ section h2::after {
     background-position: center;
     padding: 60px 20px;
     color: white;
+    box-shadow: 0 0 25px rgba(0, 229, 255, 0.5);
 }
 
 .call-to-action h2 {
-    color: white;
+    color: #00e5ff;
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.8);
 }
 
 .call-to-action h2::after {
-    background-color: white;
+    background-color: #00e5ff;
+    box-shadow: 0 0 8px rgba(0, 229, 255, 0.7);
 }
 
 .cta-buttons {
@@ -513,9 +589,26 @@ section h2::after {
     margin-top: 30px;
 }
 
+.cta-buttons a {
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: black;
+    background: linear-gradient(90deg, #00e5ff, #ff073a);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.6);
+}
+
+.cta-buttons a:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.8);
+}
+
 /* Footer */
 footer {
-    background-color: #2c3e50;
+    background: linear-gradient(90deg, #0c0c0c, #1a1a1a);
     color: white;
     padding: 0;
     margin-top: 50px;
@@ -529,10 +622,11 @@ footer {
 }
 
 .footer-section h3 {
-    color: white;
+    color: #00e5ff;
     position: relative;
     padding-bottom: 15px;
     margin-bottom: 20px;
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.7);
 }
 
 .footer-section h3::after {
@@ -542,9 +636,10 @@ footer {
     left: 0;
     width: 40px;
     height: 3px;
-    background-color: #3498db;
+    background-color: #ff073a;
+    box-shadow: 0 0 10px rgba(255, 7, 58, 0.8);
 }
-
+/* Footer */
 .footer-section ul {
     list-style: none;
     padding: 0;
@@ -556,16 +651,22 @@ footer {
 
 .footer-section ul li a {
     color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 .footer-section ul li a:hover {
-    color: white;
+    color: #00e5ff; /* Neon Blue for better contrast */
+    text-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
 }
 
 .footer-bottom {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.3);
     padding: 15px;
     text-align: center;
+    font-size: 0.9rem;
+    color: #aaa;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Responsive Design */
@@ -578,18 +679,21 @@ footer {
         flex-direction: column;
         align-items: center;
     }
-    
+
     .hero h1 {
         font-size: 2rem;
+        text-align: center;
     }
     
     .tagline {
         font-size: 1rem;
+        text-align: center;
     }
     
     nav {
         flex-direction: column;
         padding: 10px;
+        align-items: center;
     }
     
     .logo {
@@ -604,6 +708,11 @@ footer {
     nav ul li {
         margin: 5px;
     }
+    
+    .cta-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -611,7 +720,22 @@ footer {
         padding: 20px 15px;
     }
     
-    .feature-container, .team-container, .plans-container {
+    .feature-container, 
+    .team-container, 
+    .plans-container {
         grid-template-columns: 1fr;
+    }
+
+    .team-member {
+        padding: 15px;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .cta-buttons a {
+        font-size: 1rem;
+        padding: 10px 20px;
     }
 }

@@ -43,6 +43,7 @@ app.post("/update_slot", async (req, res) => {
         res.status(500).json({ error: "Database error" });
     }
 });
+
 // ✅ Fetch parking slots
 app.get("/get_slots", async (req, res) => {
     try {
