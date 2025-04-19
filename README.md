@@ -121,6 +121,8 @@ http://localhost:3000
 
 This project is licensed under the [MIT License](LICENSE).
 
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+
 ---
 
 ## 📣 Connect
